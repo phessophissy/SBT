@@ -9,3 +9,19 @@ const CONTRACT_ABI = [
     "function totalSupply() view returns (uint256)",
     "function balanceOf(address) view returns (uint256)"
 ];
+
+// State
+let provider = null;
+let signer = null;
+let contract = null;
+let userAddress = null;
+
+// DOM Elements
+const mintBtn = document.getElementById("mintBtn");
+const statusDiv = document.getElementById("status");
+
+// Helper: Show status message
+function showStatus(message, isError = false) {
+    statusDiv.textContent = message;
+    statusDiv.style.color = isError ? "#ff6b6b" : "#51cf66";
+}
