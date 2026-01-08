@@ -68,3 +68,35 @@ async function connectWallet() {
         showStatus("Connection failed: " + error.message, true);
     }
 }
+
+// Mint function
+async function mintSBT() {
+    if (!contract) {
+        await connectWallet();
+        return;
+    }
+    
+    try {
+        mintBtn.disabled = true;
+        mintBtn.textContent = "Minting...";
+        showStatus("Sending transaction...");
+        
+        const tx = await contract.mint({
+            value: ethers.parseEther(MINT_FEE)
+        });
+        
+        showStatus("Waiting for confirmation...");
+        const receipt = await tx.wait();
+        
+        if (receipt.status === 1) {
+            showStatus("Successfully minted your SBT!");
+            mintBtn.textContent = "Minted ✓";
+        } else {
+            throw new Error("Transaction failed");
+        }
+    } catch (error) {
+        showStatus("Mint failed: " + (error.reason || error.message), true);
+        mintBtn.disabled = false;
+        mintBtn.textContent = "Mint SBT";
+    }
+}
