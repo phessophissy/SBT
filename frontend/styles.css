@@ -38,3 +38,26 @@ h1 {
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255,255,255,0.1);
 }
+
+.mint-btn {
+    background: linear-gradient(90deg, #0052ff, #0066ff);
+    border: none;
+    color: white;
+    padding: 15px 40px;
+    font-size: 1.1rem;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.mint-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(0,82,255,0.3);
+}
+
+.mint-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
