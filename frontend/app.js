@@ -21,23 +21,6 @@ const mintBtn = document.getElementById("mintBtn");
 const statusDiv = document.getElementById("status");
 const totalSupplyEl = document.getElementById("totalSupply");
 
-// Error messages
-const ERROR_MESSAGES = {
-    "user rejected": "Transaction cancelled by user",
-    "insufficient funds": "Insufficient ETH balance",
-    "already minted": "You have already minted",
-    "network": "Network error - please try again"
-};
-
-// Parse error message
-function parseError(error) {
-    const msg = (error.reason || error.message || "").toLowerCase();
-    for (const [key, value] of Object.entries(ERROR_MESSAGES)) {
-        if (msg.includes(key)) return value;
-    }
-    return error.reason || error.message || "Unknown error";
-}
-
 // Fetch total supply on load
 async function fetchTotalSupply() {
     try {
@@ -94,7 +77,7 @@ async function connectWallet() {
         mintBtn.textContent = "Mint SBT";
         showStatus("Connected: " + userAddress.slice(0,6) + "..." + userAddress.slice(-4));
     } catch (error) {
-        showStatus("Connection failed: " + parseError(error), true);
+        showStatus("Connection failed: " + error.message, true);
     }
 }
 
@@ -125,7 +108,7 @@ async function mintSBT() {
             throw new Error("Transaction failed");
         }
     } catch (error) {
-        showStatus("Mint failed: " + parseError(error), true);
+        showStatus("Mint failed: " + (error.reason || error.message), true);
         mintBtn.disabled = false;
         mintBtn.textContent = "Mint SBT";
     }
@@ -138,51 +121,4 @@ mintBtn.addEventListener("click", mintSBT);
 fetchTotalSupply();
 if (window.ethereum && window.ethereum.selectedAddress) {
     connectWallet();
-}
-
-// Listen for account changes
-if (window.ethereum) {
-    window.ethereum.on("accountsChanged", (accounts) => {
-        if (accounts.length === 0) {
-            userAddress = null;
-            contract = null;
-            mintBtn.textContent = "Connect Wallet";
-            mintBtn.disabled = false;
-            showStatus("Wallet disconnected");
-        } else {
-            userAddress = accounts[0];
-            showStatus("Switched to: " + userAddress.slice(0,6) + "..." + userAddress.slice(-4));
-        }
-    });
-}
-
-// Listen for chain changes
-if (window.ethereum) {
-    window.ethereum.on("chainChanged", (chainId) => {
-        if (chainId !== BASE_CHAIN_ID) {
-            showStatus("Please switch to Base network", true);
-        } else {
-            showStatus("Connected to Base network");
-        }
-    });
-}
-
-// Check user balance
-async function checkBalance() {
-    if (!provider || !userAddress) return null;
-    try {
-        const balance = await provider.getBalance(userAddress);
-        return ethers.formatEther(balance);
-    } catch (e) {
-        return null;
-    }
-}
-
-// Display balance after connection
-async function displayBalance() {
-    const balance = await checkBalance();
-    if (balance !== null) {
-        const shortBalance = parseFloat(balance).toFixed(6);
-        showStatus("Balance: " + shortBalance + " ETH");
-    }
 }
