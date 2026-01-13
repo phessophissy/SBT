@@ -277,3 +277,22 @@ h1 {
     color: #888;
     margin-top: 5px;
 }
+
+/* Network badge */
+.network-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(0,82,255,0.2);
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+}
+
+.network-badge::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    background: #51cf66;
+    border-radius: 50%;
+}
