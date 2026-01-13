@@ -139,3 +139,19 @@ fetchTotalSupply();
 if (window.ethereum && window.ethereum.selectedAddress) {
     connectWallet();
 }
+
+// Listen for account changes
+if (window.ethereum) {
+    window.ethereum.on("accountsChanged", (accounts) => {
+        if (accounts.length === 0) {
+            userAddress = null;
+            contract = null;
+            mintBtn.textContent = "Connect Wallet";
+            mintBtn.disabled = false;
+            showStatus("Wallet disconnected");
+        } else {
+            userAddress = accounts[0];
+            showStatus("Switched to: " + userAddress.slice(0,6) + "..." + userAddress.slice(-4));
+        }
+    });
+}
