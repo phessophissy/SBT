@@ -241,3 +241,13 @@ h1 {
     opacity: 1;
     visibility: visible;
 }
+
+/* Wallet address display */
+.wallet-address {
+    font-family: 'Courier New', monospace;
+    background: rgba(0,0,0,0.3);
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    word-break: break-all;
+}
