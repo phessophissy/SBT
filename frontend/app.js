@@ -177,3 +177,12 @@ async function checkBalance() {
         return null;
     }
 }
+
+// Display balance after connection
+async function displayBalance() {
+    const balance = await checkBalance();
+    if (balance !== null) {
+        const shortBalance = parseFloat(balance).toFixed(6);
+        showStatus("Balance: " + shortBalance + " ETH");
+    }
+}
