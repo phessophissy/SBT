@@ -330,3 +330,20 @@ h1 {
     font-weight: bold;
     color: #0052ff;
 }
+
+/* Transaction link */
+.tx-link {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 16px;
+    background: rgba(0,82,255,0.1);
+    border-radius: 8px;
+    color: #0052ff;
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: background 0.2s;
+}
+
+.tx-link:hover {
+    background: rgba(0,82,255,0.2);
+}
