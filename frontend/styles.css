@@ -296,3 +296,23 @@ h1 {
     background: #51cf66;
     border-radius: 50%;
 }
+
+/* Mobile responsive */
+@media (max-width: 480px) {
+    .container {
+        padding: 20px 15px;
+    }
+    
+    h1 {
+        font-size: 1.8rem;
+    }
+    
+    .card {
+        padding: 20px;
+    }
+    
+    .stats {
+        flex-direction: column;
+        gap: 15px;
+    }
+}
