@@ -347,3 +347,19 @@ h1 {
 .tx-link:hover {
     background: rgba(0,82,255,0.2);
 }
+
+/* Secondary button */
+.btn-secondary {
+    background: transparent;
+    border: 1px solid #0052ff;
+    color: #0052ff;
+    padding: 10px 20px;
+    font-size: 0.9rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-secondary:hover {
+    background: rgba(0,82,255,0.1);
+}
