@@ -1,7 +1,7 @@
 // Contract configuration
 const CONTRACT_ADDRESS = "0xB8EeEd4EC90D0C9B2e35345b0f938F1168065329";
 const MINT_FEE = "0.000001";
-const BASE_CHAIN_ID = "0x2105"; // 8453 in hex
+const BASE_CHAIN_ID = "0x2105";
 
 const CONTRACT_ABI = [
     "function mint() external payable",
@@ -19,6 +19,19 @@ let userAddress = null;
 // DOM Elements
 const mintBtn = document.getElementById("mintBtn");
 const statusDiv = document.getElementById("status");
+const totalSupplyEl = document.getElementById("totalSupply");
+
+// Fetch total supply on load
+async function fetchTotalSupply() {
+    try {
+        const rpcProvider = new ethers.JsonRpcProvider("https://mainnet.base.org");
+        const readContract = new ethers.Contract(CONTRACT_ADDRESS, CONTRACT_ABI, rpcProvider);
+        const supply = await readContract.totalSupply();
+        if (totalSupplyEl) totalSupplyEl.textContent = supply.toString();
+    } catch (e) {
+        console.log("Could not fetch supply:", e);
+    }
+}
 
 // Helper: Show status message
 function showStatus(message, isError = false) {
@@ -37,7 +50,6 @@ async function connectWallet() {
         const accounts = await window.ethereum.request({ method: "eth_requestAccounts" });
         userAddress = accounts[0];
         
-        // Switch to Base chain
         try {
             await window.ethereum.request({
                 method: "wallet_switchEthereumChain",
@@ -91,6 +103,7 @@ async function mintSBT() {
         if (receipt.status === 1) {
             showStatus("Successfully minted your SBT!");
             mintBtn.textContent = "Minted ✓";
+            fetchTotalSupply();
         } else {
             throw new Error("Transaction failed");
         }
@@ -104,7 +117,8 @@ async function mintSBT() {
 // Event listener
 mintBtn.addEventListener("click", mintSBT);
 
-// Check if already connected
+// Initialize
+fetchTotalSupply();
 if (window.ethereum && window.ethereum.selectedAddress) {
     connectWallet();
 }
