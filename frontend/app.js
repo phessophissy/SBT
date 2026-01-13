@@ -155,3 +155,14 @@ if (window.ethereum) {
         }
     });
 }
+
+// Listen for chain changes
+if (window.ethereum) {
+    window.ethereum.on("chainChanged", (chainId) => {
+        if (chainId !== BASE_CHAIN_ID) {
+            showStatus("Please switch to Base network", true);
+        } else {
+            showStatus("Connected to Base network");
+        }
+    });
+}
