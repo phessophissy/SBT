@@ -316,3 +316,17 @@ h1 {
         gap: 15px;
     }
 }
+
+/* Header section */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #0052ff;
+}
