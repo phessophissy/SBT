@@ -363,3 +363,10 @@ h1 {
 .btn-secondary:hover {
     background: rgba(0,82,255,0.1);
 }
+
+/* Card hover effect */
+.card:hover {
+    border-color: rgba(0,82,255,0.3);
+    transform: translateY(-2px);
+    transition: all 0.3s ease;
+}
