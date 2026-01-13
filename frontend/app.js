@@ -21,6 +21,23 @@ const mintBtn = document.getElementById("mintBtn");
 const statusDiv = document.getElementById("status");
 const totalSupplyEl = document.getElementById("totalSupply");
 
+// Error messages
+const ERROR_MESSAGES = {
+    "user rejected": "Transaction cancelled by user",
+    "insufficient funds": "Insufficient ETH balance",
+    "already minted": "You have already minted",
+    "network": "Network error - please try again"
+};
+
+// Parse error message
+function parseError(error) {
+    const msg = (error.reason || error.message || "").toLowerCase();
+    for (const [key, value] of Object.entries(ERROR_MESSAGES)) {
+        if (msg.includes(key)) return value;
+    }
+    return error.reason || error.message || "Unknown error";
+}
+
 // Fetch total supply on load
 async function fetchTotalSupply() {
     try {
@@ -77,7 +94,7 @@ async function connectWallet() {
         mintBtn.textContent = "Mint SBT";
         showStatus("Connected: " + userAddress.slice(0,6) + "..." + userAddress.slice(-4));
     } catch (error) {
-        showStatus("Connection failed: " + error.message, true);
+        showStatus("Connection failed: " + parseError(error), true);
     }
 }
 
@@ -108,7 +125,7 @@ async function mintSBT() {
             throw new Error("Transaction failed");
         }
     } catch (error) {
-        showStatus("Mint failed: " + (error.reason || error.message), true);
+        showStatus("Mint failed: " + parseError(error), true);
         mintBtn.disabled = false;
         mintBtn.textContent = "Mint SBT";
     }
