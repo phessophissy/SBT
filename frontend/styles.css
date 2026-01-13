@@ -452,3 +452,11 @@ h1 {
     transform: translateY(-2px);
     transition: all 0.3s ease;
 }
+
+/* Gradient text utility */
+.gradient-text {
+    background: linear-gradient(90deg, #0052ff, #00d4ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
