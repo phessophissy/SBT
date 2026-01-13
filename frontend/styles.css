@@ -378,3 +378,23 @@ h1 {
     -webkit-text-fill-color: transparent;
     background-clip: text;
 }
+
+/* Mobile responsive */
+@media (max-width: 480px) {
+    .container {
+        padding: 20px 15px;
+    }
+    
+    h1 {
+        font-size: 1.8rem;
+    }
+    
+    .card {
+        padding: 20px;
+    }
+    
+    .stats {
+        flex-direction: column;
+        gap: 15px;
+    }
+}
