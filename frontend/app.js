@@ -166,3 +166,14 @@ if (window.ethereum) {
         }
     });
 }
+
+// Check user balance
+async function checkBalance() {
+    if (!provider || !userAddress) return null;
+    try {
+        const balance = await provider.getBalance(userAddress);
+        return ethers.formatEther(balance);
+    } catch (e) {
+        return null;
+    }
+}
