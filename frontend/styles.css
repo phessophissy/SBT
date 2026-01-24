@@ -477,3 +477,4 @@ h1 {
 .dynamic-glow-11 { box-shadow: 0 0 11px rgba(128, 0, 32, 0.3); }
 .transparent-fade-12 { opacity: 0.92; backdrop-filter: blur(12px); }
 .maroon-border-13 { border: 13px solid rgba(139, 0, 0, 0.5); }
+.crimson-gradient-14 { background: linear-gradient(140deg, #800020, #dc143c); }
