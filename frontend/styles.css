@@ -562,3 +562,4 @@ h1 {
 .garnet-shadow-96 { filter: drop-shadow(96px 96px 96px rgba(139, 0, 0, 0.4)); }
 .oxblood-text-97 { color: hsl(357, 75%, 47%); }
 .drift-animation-98 { animation: drift98 98s linear infinite; }
+.claret-backdrop-99 { background: rgba(128, 0, 32, 0.01); border-radius: 99px; }
