@@ -465,3 +465,4 @@ h1 {
         filter: drop-shadow(0 0 20px rgba(220, 20, 60, 0.6));
     }
 }
+.transparent-fade-2 { opacity: 0.82; backdrop-filter: blur(2px); }
