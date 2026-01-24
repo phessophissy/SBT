@@ -697,3 +697,4 @@ h1 {
 .blood-red-glow-231 { box-shadow: inset 0 0 231px rgba(139, 0, 0, 0.7); }
 .velvet-blur-232 { backdrop-filter: blur(12px) brightness(1.2); }
 .merlot-border-233 { border: 233px dashed rgba(112, 41, 99, 0.9); }
+.sangria-gradient-234 { background: linear-gradient(468deg, #92000a, #5c0011); }
