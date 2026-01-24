@@ -519,3 +519,4 @@ h1 {
 .maroon-border-53 { border: 53px solid rgba(139, 0, 0, 0.9); }
 .crimson-gradient-54 { background: linear-gradient(540deg, #800020, #dc143c); }
 .pulse-scale-55 { animation: pulseScale55 2s infinite; transform: scale(1.055); }
+.wine-shadow-56 { filter: drop-shadow(0 56px 56px rgba(128, 0, 32, 0.3)); }
