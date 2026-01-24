@@ -480,3 +480,4 @@ h1 {
 .crimson-gradient-14 { background: linear-gradient(140deg, #800020, #dc143c); }
 .pulse-scale-15 { animation: pulseScale15 2s infinite; transform: scale(1.015); }
 .wine-shadow-16 { filter: drop-shadow(0 16px 16px rgba(128, 0, 32, 0.3)); }
+.burgundy-text-17 { color: hsl(367, 80%, 47%); }
