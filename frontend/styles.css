@@ -665,3 +665,4 @@ h1 {
 .rosewood-bg-199 { background: rgba(101, 0, 11, 0.02); border-radius: 19px; }
 .deep-maroon-200 { background: hsl(350, 80%, 15%); }
 .blood-red-glow-201 { box-shadow: inset 0 0 201px rgba(139, 0, 0, 0.4); }
+.velvet-blur-202 { backdrop-filter: blur(2px) brightness(1.2); }
