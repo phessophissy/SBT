@@ -619,3 +619,4 @@ h1 {
 .burgundy-border-153 { border: 153px dotted rgba(128, 0, 32, 0.1); }
 .ruby-gradient-154 { background: linear-gradient(154deg, #722f37, #800020); }
 .float-scale-155 { animation: floatScale155 3s infinite; transform: scale(1.02); }
+.garnet-shadow-156 { filter: drop-shadow(156px 156px 156px rgba(139, 0, 0, 0.4)); }
