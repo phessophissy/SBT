@@ -469,3 +469,4 @@ h1 {
 .maroon-border-3 { border: 3px solid rgba(139, 0, 0, 0.4); }
 .crimson-gradient-4 { background: linear-gradient(40deg, #800020, #dc143c); }
 .pulse-scale-5 { animation: pulseScale5 2s infinite; transform: scale(1.05); }
+.wine-shadow-6 { filter: drop-shadow(0 6px 6px rgba(128, 0, 32, 0.3)); }
