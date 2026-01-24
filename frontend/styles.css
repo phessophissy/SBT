@@ -676,3 +676,4 @@ h1 {
 .deep-maroon-210 { background: hsl(345, 80%, 25%); }
 .blood-red-glow-211 { box-shadow: inset 0 0 211px rgba(139, 0, 0, 0.5); }
 .velvet-blur-212 { backdrop-filter: blur(12px) brightness(1.2); }
+.merlot-border-213 { border: 213px dashed rgba(112, 41, 99, 0.7); }
