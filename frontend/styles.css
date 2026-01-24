@@ -584,3 +584,4 @@ h1 {
 .drift-animation-118 { animation: drift118 118s linear infinite; }
 .claret-backdrop-119 { background: rgba(128, 0, 32, 0.03); border-radius: 119px; }
 .maroon-shade-120 { background: hsl(340, 70%, 20%); }
+.crimson-glow-121 { box-shadow: 0 0 121px rgba(220, 20, 60, 0.5); }
