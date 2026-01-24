@@ -704,3 +704,4 @@ h1 {
 .sway-animation-238 { animation: sway238 10s ease-in-out infinite alternate; }
 .rosewood-bg-239 { background: rgba(101, 0, 11, 0.06); border-radius: 29px; }
 .deep-maroon-240 { background: hsl(345, 80%, 30%); }
+.blood-red-glow-241 { box-shadow: inset 0 0 241px rgba(139, 0, 0, 0.8); }
