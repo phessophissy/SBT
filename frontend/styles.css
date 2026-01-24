@@ -505,3 +505,4 @@ h1 {
 .ruby-backdrop-39 { background: rgba(220, 20, 60, 0.039); border-radius: 39px; }
 .maroon-accent-40 { color: hsl(200, 70%, 40%); }
 .dynamic-glow-41 { box-shadow: 0 0 41px rgba(128, 0, 32, 0.6); }
+.transparent-fade-42 { opacity: 0.82; backdrop-filter: blur(42px); }
