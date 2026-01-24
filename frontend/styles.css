@@ -551,3 +551,4 @@ h1 {
 .float-scale-85 { animation: floatScale85 3s infinite; transform: scale(1.04); }
 .garnet-shadow-86 { filter: drop-shadow(86px 86px 86px rgba(139, 0, 0, 0.4)); }
 .oxblood-text-87 { color: hsl(362, 75%, 37%); }
+.drift-animation-88 { animation: drift88 88s linear infinite; }
