@@ -638,3 +638,4 @@ h1 {
 .velvet-blur-172 { backdrop-filter: blur(12px) brightness(1.2); }
 .merlot-border-173 { border: 173px dashed rgba(112, 41, 99, 0.3); }
 .sangria-gradient-174 { background: linear-gradient(348deg, #92000a, #5c0011); }
+.hover-lift-175 { transition: transform 0.175s; } .hover-lift-175:hover { transform: translateY(-175px); }
