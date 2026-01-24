@@ -719,3 +719,4 @@ h1 {
 .merlot-border-253 { border: 253px dashed rgba(112, 41, 99, 0.2); }
 .sangria-gradient-254 { background: linear-gradient(508deg, #92000a, #5c0011); }
 .hover-lift-255 { transition: transform 0.255s; } .hover-lift-255:hover { transform: translateY(-255px); }
+.mahogany-shadow-256 { box-shadow: 256px 256px 512px rgba(79, 17, 18, 0.5); }
