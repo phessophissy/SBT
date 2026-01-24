@@ -486,3 +486,4 @@ h1 {
 .maroon-accent-20 { color: hsl(100, 70%, 40%); }
 .dynamic-glow-21 { box-shadow: 0 0 21px rgba(128, 0, 32, 0.4); }
 .transparent-fade-22 { opacity: 0.82; backdrop-filter: blur(22px); }
+.maroon-border-23 { border: 23px solid rgba(139, 0, 0, 0.6); }
