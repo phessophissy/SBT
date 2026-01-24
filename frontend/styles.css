@@ -597,3 +597,4 @@ h1 {
 .crimson-glow-131 { box-shadow: 0 0 131px rgba(220, 20, 60, 0.6); }
 .wine-blur-132 { backdrop-filter: blur(132px) saturate(1.132); }
 .burgundy-border-133 { border: 133px dotted rgba(128, 0, 32, 0.8); }
+.ruby-gradient-134 { background: linear-gradient(134deg, #722f37, #800020); }
