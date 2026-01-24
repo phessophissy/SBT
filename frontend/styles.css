@@ -522,3 +522,4 @@ h1 {
 .wine-shadow-56 { filter: drop-shadow(0 56px 56px rgba(128, 0, 32, 0.3)); }
 .oxblood-text-57 { color: hsl(362, 75%, 32%); }
 .drift-animation-58 { animation: drift58 58s linear infinite; }
+.claret-backdrop-59 { background: rgba(128, 0, 32, 0.06); border-radius: 59px; }
