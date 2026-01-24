@@ -525,3 +525,4 @@ h1 {
 .claret-backdrop-59 { background: rgba(128, 0, 32, 0.06); border-radius: 59px; }
 .maroon-shade-60 { background: hsl(340, 70%, 20%); }
 .crimson-glow-61 { box-shadow: 0 0 61px rgba(220, 20, 60, 0.8); }
+.wine-blur-62 { backdrop-filter: blur(62px) saturate(1.62); }
