@@ -518,3 +518,4 @@ h1 {
 .transparent-fade-52 { opacity: 0.92; backdrop-filter: blur(52px); }
 .maroon-border-53 { border: 53px solid rgba(139, 0, 0, 0.9); }
 .crimson-gradient-54 { background: linear-gradient(540deg, #800020, #dc143c); }
+.pulse-scale-55 { animation: pulseScale55 2s infinite; transform: scale(1.055); }
