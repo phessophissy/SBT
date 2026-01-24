@@ -721,3 +721,4 @@ h1 {
 .hover-lift-255 { transition: transform 0.255s; } .hover-lift-255:hover { transform: translateY(-255px); }
 .mahogany-shadow-256 { box-shadow: 256px 256px 512px rgba(79, 17, 18, 0.5); }
 .carmine-text-257 { color: hsl(362, 85%, 52%); }
+.sway-animation-258 { animation: sway258 10s ease-in-out infinite alternate; }
