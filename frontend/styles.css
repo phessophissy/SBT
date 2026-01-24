@@ -482,3 +482,4 @@ h1 {
 .wine-shadow-16 { filter: drop-shadow(0 16px 16px rgba(128, 0, 32, 0.3)); }
 .burgundy-text-17 { color: hsl(367, 80%, 47%); }
 .float-animation-18 { animation: float18 18s ease-in-out infinite; }
+.ruby-backdrop-19 { background: rgba(220, 20, 60, 0.019); border-radius: 19px; }
