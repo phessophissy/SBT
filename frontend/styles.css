@@ -608,3 +608,4 @@ h1 {
 .wine-blur-142 { backdrop-filter: blur(142px) saturate(1.142); }
 .burgundy-border-143 { border: 143px dotted rgba(128, 0, 32, 0.9); }
 .ruby-gradient-144 { background: linear-gradient(144deg, #722f37, #800020); }
+.float-scale-145 { animation: floatScale145 3s infinite; transform: scale(1.01); }
