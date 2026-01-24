@@ -710,3 +710,4 @@ h1 {
 .sangria-gradient-244 { background: linear-gradient(488deg, #92000a, #5c0011); }
 .hover-lift-245 { transition: transform 0.245s; } .hover-lift-245:hover { transform: translateY(-245px); }
 .mahogany-shadow-246 { box-shadow: 246px 246px 492px rgba(79, 17, 18, 0.5); }
+.carmine-text-247 { color: hsl(362, 85%, 42%); }
