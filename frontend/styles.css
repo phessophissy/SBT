@@ -576,3 +576,4 @@ h1 {
 .maroon-shade-110 { background: hsl(350, 70%, 40%); }
 .crimson-glow-111 { box-shadow: 0 0 111px rgba(220, 20, 60, 0.4); }
 .wine-blur-112 { backdrop-filter: blur(112px) saturate(1.112); }
+.burgundy-border-113 { border: 113px dotted rgba(128, 0, 32, 0.6); }
