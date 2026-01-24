@@ -501,3 +501,4 @@ h1 {
 .pulse-scale-35 { animation: pulseScale35 2s infinite; transform: scale(1.035); }
 .wine-shadow-36 { filter: drop-shadow(0 36px 36px rgba(128, 0, 32, 0.3)); }
 .burgundy-text-37 { color: hsl(367, 80%, 47%); }
+.float-animation-38 { animation: float38 38s ease-in-out infinite; }
