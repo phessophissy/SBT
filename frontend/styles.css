@@ -621,3 +621,4 @@ h1 {
 .float-scale-155 { animation: floatScale155 3s infinite; transform: scale(1.02); }
 .garnet-shadow-156 { filter: drop-shadow(156px 156px 156px rgba(139, 0, 0, 0.4)); }
 .carmine-text-157 { color: hsl(362, 85%, 52%); }
+.sway-animation-158 { animation: sway158 10s ease-in-out infinite alternate; }
