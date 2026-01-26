@@ -1,0 +1,76 @@
+# SBT Minting Platform - Docker Compose
+
+version: '3.8'
+
+services:
+  # Frontend service
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: frontend
+    ports:
+      - "8080:80"
+    networks:
+      - sbt-network
+    restart: unless-stopped
+    depends_on:
+      - backend
+
+  # Backend/Contracts development service
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: development
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+    networks:
+      - sbt-network
+    restart: unless-stopped
+    command: ["tail", "-f", "/dev/null"]  # Keep container running
+
+  # Local Hardhat network for development
+  hardhat-node:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: development
+    ports:
+      - "8545:8545"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    networks:
+      - sbt-network
+    restart: unless-stopped
+    command: ["npx", "hardhat", "node"]
+    depends_on:
+      - backend
+
+  # PostgreSQL database (for future features)
+  postgres:
+    image: postgres:15-alpine
+    environment:
+      - POSTGRES_DB=sbt_platform
+      - POSTGRES_USER=sbt_user
+      - POSTGRES_PASSWORD=sbt_password
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - sbt-network
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+
+networks:
+  sbt-network:
+    driver: bridge
