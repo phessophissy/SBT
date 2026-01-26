@@ -17,6 +17,9 @@ contract SoulBoundToken is ERC721, Ownable {
     
     // Track tokens minted by each address
     mapping(address => uint256[]) public tokensOfOwner;
+
+    // Track whether an address has already minted (one per address)
+    mapping(address => bool) public hasMinted;
     
     // Events
     event SBTMinted(address indexed to, uint256 indexed tokenId);
@@ -30,14 +33,16 @@ contract SoulBoundToken is ERC721, Ownable {
     /**
      * @dev Mint a Soul Bound Token
      * Requires exactly MINT_FEE to be sent
-     * Each address can mint multiple times
+     * Each address can mint only once
      */
     function mint() external payable {
+        require(!hasMinted[msg.sender], "SBT: address has already minted");
         require(msg.value == MINT_FEE, "Incorrect fee: must send exactly 0.000001 ETH");
         
         uint256 tokenId = _tokenIdCounter;
         _tokenIdCounter++;
         
+        hasMinted[msg.sender] = true;
         tokensOfOwner[msg.sender].push(tokenId);
         
         _safeMint(msg.sender, tokenId);
