@@ -1,0 +1,59 @@
+{
+  "name": "sbt-minting-platform",
+  "version": "2.0.0",
+  "description": "Soul Bound Token minting platform on Base Chain with enhanced tooling",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "compile": "npx hardhat compile",
+    "deploy": "node scripts/deploy.js",
+    "generate-wallets": "node scripts/generateWallets.js",
+    "fund-wallets": "node scripts/fundWallets.js",
+    "mint": "node scripts/mintSBT.js",
+    "test": "npx hardhat test",
+    "lint": "eslint scripts contracts --max-warnings 5",
+    "validate-config": "node -e \"import('./services/config-validator.js').then(m => new m.default().validate().then(r => console.log(JSON.stringify(r, null, 2))))\"",
+    "cli": "node cli.js",
+    "monitor": "node services/transaction-monitor.js",
+    "dev": "docker-compose up",
+    "dev:stop": "docker-compose down",
+    "clean": "rm -rf node_modules artifacts cache"
+  },
+  "keywords": [
+    "SBT",
+    "Soul Bound Token",
+    "Base Chain",
+    "NFT",
+    "Web3",
+    "Ethereum"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@nomicfoundation/hardhat-chai-matchers": "^2.1.0",
+    "@nomicfoundation/hardhat-ethers": "^4.0.3",
+    "@nomicfoundation/hardhat-network-helpers": "^3.0.3",
+    "@nomicfoundation/hardhat-toolbox": "^6.1.0",
+    "@nomicfoundation/hardhat-verify": "^3.0.8",
+    "@typechain/ethers-v6": "^0.5.1",
+    "@typechain/hardhat": "^9.1.0",
+    "chai": "^6.2.2",
+    "dotenv": "^17.2.3",
+    "hardhat": "^3.1.2",
+    "hardhat-gas-reporter": "^2.3.0",
+    "solidity-coverage": "^0.8.17",
+    "typechain": "^8.3.2",
+    "eslint": "^8.52.0",
+    "prettier": "^3.0.3",
+    "commander": "^11.1.0",
+    "chalk": "^5.3.0"
+  },
+  "dependencies": {
+    "@openzeppelin/contracts": "^5.4.0",
+    "ethers": "^6.16.0"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  }
+}
