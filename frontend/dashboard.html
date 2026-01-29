@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SBT Minting Platform - Dashboard</title>
+    <link rel="stylesheet" href="dashboard-styles.css">
+</head>
+<body>
+    <div class="app">
+        <!-- Header Navigation -->
+        <header class="header">
+            <div class="header-wrapper">
+                <div class="logo">
+                    <span class="logo-icon">⚡</span>
+                    <div>
+                        <h1>SBT Minting</h1>
+                        <p>Base Chain</p>
+                    </div>
+                </div>
+                <nav class="nav-tabs">
+                    <button class="nav-tab active" data-tab="dashboard">Dashboard</button>
+                    <button class="nav-tab" data-tab="mint">Mint</button>
+                    <button class="nav-tab" data-tab="stats">Stats</button>
+                    <button class="nav-tab" data-tab="history">History</button>
+                </nav>
+                <button id="connectBtn" class="btn-connect">Connect Wallet</button>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Dashboard Tab -->
+            <section id="dashboard-tab" class="tab-section active">
+                <div class="dashboard-layout">
+                    <!-- Wallet Info -->
+                    <div class="card card-wallet">
+                        <h3>👤 Your Wallet</h3>
+                        <div class="wallet-info">
+                            <div class="info-row">
+                                <span class="label">Address:</span>
+                                <span id="walletAddr" class="value mono">Not connected</span>
+                                <button id="copyAddr" class="btn-icon" title="Copy address">📋</button>
+                            </div>
+                            <div class="info-row">
+                                <span class="label">Balance:</span>
+                                <span id="walletBalance" class="value">-- ETH</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="label">Status:</span>
+                                <span id="mintStatus" class="badge pending">Not checked</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Stats -->
+                    <div class="card card-stats">
+                        <h3>📊 Platform Stats</h3>
+                        <div class="stats-grid">
+                            <div class="stat">
+                                <div class="stat-num" id="totalMints">0</div>
+                                <div class="stat-label">Total Mints</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-num" id="gasGwei">--</div>
+                                <div class="stat-label">Gas (Gwei)</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-num" id="chainName">Base</div>
+                                <div class="stat-label">Network</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Latest Transactions -->
+                    <div class="card card-recent">
+                        <h3>⏱️ Recent Activity</h3>
+                        <div id="recentTxs" class="tx-list">
+                            <p class="empty">No recent transactions</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Mint Tab -->
+            <section id="mint-tab" class="tab-section">
+                <div class="mint-container">
+                    <div class="card card-mint">
+                        <h2>Mint Your SBT</h2>
+                        <p class="subtitle">Soul Bound Tokens are non-transferable identity credentials</p>
+
+                        <div class="features">
+                            <div class="feature">✓ One per wallet</div>
+                            <div class="feature">✓ Non-transferable</div>
+                            <div class="feature">✓ Permanent credential</div>
+                        </div>
+
+                        <div class="mint-fee">
+                            <span>Cost:</span>
+                            <span class="fee-amount">0.000001 ETH</span>
+                        </div>
+
+                        <button id="mintButtonMain" class="btn-mint btn-primary" onclick="handleMint()">
+                            Connect Wallet to Mint
+                        </button>
+
+                        <!-- Transaction Monitor -->
+                        <div id="txMonitor" class="tx-monitor" style="display:none;">
+                            <div class="tx-progress">
+                                <div id="progressBar" class="progress"></div>
+                            </div>
+                            <div class="tx-info">
+                                <p id="txStatusText">Processing...</p>
+                                <a id="txLink" href="#" target="_blank" class="link">View on BaseScan →</a>
+                            </div>
+                        </div>
+
+                        <div id="mintAlert" class="alert" style="display:none;"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Statistics Tab -->
+            <section id="stats-tab" class="tab-section">
+                <div class="stats-container">
+                    <h2>Platform Statistics</h2>
+                    
+                    <div class="stats-cards-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon">👥</div>
+                            <div class="stat-val" id="stat-totalMints">0</div>
+                            <div class="stat-title">Total Mints</div>
+                        </div>
+
+                        <div class="stat-card">
+                            <div class="stat-icon">💰</div>
+                            <div class="stat-val" id="stat-revenue">0 ETH</div>
+                            <div class="stat-title">Revenue</div>
+                        </div>
+
+                        <div class="stat-card">
+                            <div class="stat-icon">⛽</div>
+                            <div class="stat-val" id="stat-gas">--</div>
+                            <div class="stat-title">Avg Gas</div>
+                        </div>
+
+                        <div class="stat-card">
+                            <div class="stat-icon">🔗</div>
+                            <div class="stat-val" id="stat-network">Base</div>
+                            <div class="stat-title">Chain</div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h3>Chain Info</h3>
+                        <div class="info-grid">
+                            <div class="info-item">
+                                <span class="label">Contract:</span>
+                                <span class="value mono" id="contractAddr">0xB8Ee...D329</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="label">Standard:</span>
+                                <span class="value">ERC-721</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="label">Network ID:</span>
+                                <span class="value">8453</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- History Tab -->
+            <section id="history-tab" class="tab-section">
+                <div class="history-container">
+                    <h2>Transaction History</h2>
+
+                    <div class="filter-buttons">
+                        <button class="filter-btn active" data-filter="all">All</button>
+                        <button class="filter-btn" data-filter="success">Success</button>
+                        <button class="filter-btn" data-filter="pending">Pending</button>
+                        <button class="filter-btn" data-filter="failed">Failed</button>
+                    </div>
+
+                    <div id="historyContent" class="history-list">
+                        <div class="empty-state">
+                            <p>📋 No transactions yet</p>
+                            <small>Start by minting your SBT</small>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <p>SBT Minting Platform v2.0 | Base Chain</p>
+                <div class="footer-links">
+                    <a href="https://github.com/phessophissy/SBT" target="_blank">GitHub</a>
+                    <a href="https://basescan.org" target="_blank">BaseScan</a>
+                    <a href="https://base.org" target="_blank">Base</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="https://cdn.ethers.org/v6/ethers.min.js"></script>
+    <script src="dashboard-app.js"></script>
+</body>
+</html>
