@@ -1,0 +1,50 @@
+name: "Security Scan"
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+  schedule:
+    - cron: "0 0 * * 0" # Weekly on Sunday
+
+jobs:
+  slither:
+    runs-on: ubuntu-latest
+    name: Slither Security Analysis
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+
+      - name: Install Slither
+        run: pip install slither-analyzer
+
+      - name: Run Slither
+        run: slither contracts/
+        continue-on-error: true
+
+  dependencies:
+    runs-on: ubuntu-latest
+    name: Dependency Check
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "18"
+          cache: "npm"
+
+      - name: Check for vulnerabilities
+        run: npm audit
+        continue-on-error: true
+
+      - name: List outdated packages
+        run: npm outdated
+        continue-on-error: true
