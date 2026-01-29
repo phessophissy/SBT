@@ -1,0 +1,47 @@
+name: SBT Minting Platform
+description: Soul Bound Token minting platform with enhanced tooling
+version: 2.0.0
+
+services:
+  # Hardhat Node (Local Development)
+  hardhat:
+    image: node:18-alpine
+    working_dir: /app
+    volumes:
+      - .:/app
+      - node_modules:/app/node_modules
+    ports:
+      - "8545:8545"
+    command: npx hardhat node
+    environment:
+      - NODE_ENV=development
+
+  # Frontend Development Server
+  frontend:
+    image: node:18-alpine
+    working_dir: /app/frontend
+    volumes:
+      - ./frontend:/app/frontend
+      - node_modules:/app/node_modules
+    ports:
+      - "3000:3000"
+    command: npx http-server -p 3000
+    depends_on:
+      - hardhat
+
+  # Monitoring Service (Optional)
+  monitor:
+    image: node:18-alpine
+    working_dir: /app
+    volumes:
+      - .:/app
+      - node_modules:/app/node_modules
+    command: npm run monitor
+    depends_on:
+      - hardhat
+    environment:
+      - NODE_ENV=development
+      - BASE_RPC_URL=http://hardhat:8545
+
+volumes:
+  node_modules:
