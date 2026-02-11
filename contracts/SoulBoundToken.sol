@@ -3,6 +3,7 @@ pragma solidity ^0.8.20;
 
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
+import "@openzeppelin/contracts/utils/Strings.sol";
 
 /**
  * @title SoulBoundToken
@@ -21,6 +22,9 @@ contract SoulBoundToken is ERC721, Ownable {
     // Events
     event SBTMinted(address indexed to, uint256 indexed tokenId);
     event FundsWithdrawn(address indexed to, uint256 amount);
+    
+    // Base URI for token metadata
+    string private _baseURIOverride = "";
     
     constructor() ERC721("SoulBoundToken", "SBT") Ownable(msg.sender) {
         // Start token IDs from 1
@@ -109,5 +113,47 @@ contract SoulBoundToken is ERC721, Ownable {
      */
     function getBalance() external view returns (uint256) {
         return address(this).balance;
+    }
+    
+    /**
+     * @dev Set base URI for token metadata
+     */
+    function setBaseURI(string calldata newBaseURI) external onlyOwner {
+        _baseURIOverride = newBaseURI;
+    }
+    
+    /**
+     * @dev Batch mint for multiple addresses (owner only)
+     */
+    function batchMint(address[] calldata recipients) external onlyOwner {
+        for (uint256 i = 0; i < recipients.length; i++) {
+            uint256 tokenId = _tokenIdCounter;
+            _tokenIdCounter++;
+            
+            tokensOfOwner[recipients[i]].push(tokenId);
+            _safeMint(recipients[i], tokenId);
+            
+            emit SBTMinted(recipients[i], tokenId);
+        }
+    }
+    
+    /**
+     * @dev Get token URI (metadata support)
+     */
+    function tokenURI(uint256 tokenId) public view override returns (string memory) {
+        _requireOwned(tokenId);
+        
+        if (bytes(_baseURIOverride).length > 0) {
+            return string(abi.encodePacked(_baseURIOverride, Strings.toString(tokenId)));
+        }
+        
+        return "";
+    }
+    
+    /**
+     * @dev Get mint count for an address
+     */
+    function getMintCount(address account) external view returns (uint256) {
+        return tokensOfOwner[account].length;
     }
 }
