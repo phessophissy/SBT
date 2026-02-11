@@ -9,7 +9,7 @@
     "generate-wallets": "node scripts/generateWallets.js",
     "fund-wallets": "node scripts/fundWallets.js",
     "mint": "node scripts/mintSBT.js",
-    "test": "echo \"Tests not configured\" && exit 0"
+    "test": "npx hardhat test"
   },
   "keywords": ["SBT", "Soul Bound Token", "Base Chain", "NFT"],
   "author": "",
